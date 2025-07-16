@@ -1,0 +1,20 @@
+{
+  "name": "mev-detector",
+  "version": "1.0.0",
+  "description": "MEV-Bot Detector with Real-Time Alert System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wasm:build": "cd mev_engine && wasm-pack build --target nodejs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ethers": "^6.13.1",
+    "ioredis": "^5.4.1",
+    "kafkajs": "^2.2.4"
+  }
+}

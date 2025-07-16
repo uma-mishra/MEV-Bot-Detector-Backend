@@ -1,0 +1,71 @@
+=============== Jul 16, 2025 (UTC) ===============
+12:26:56.079400 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:26:56.106266 db@open opening
+12:26:56.113699 version@stat F·[] S·0B[] Sc·[]
+12:26:56.124835 db@janitor F·2 G·0
+12:26:56.125300 db@open done T·18.736798ms
+=============== Jul 16, 2025 (UTC) ===============
+16:06:39.006927 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:06:39.052678 version@stat F·[] S·0B[] Sc·[]
+16:06:39.053868 db@open opening
+16:06:39.057401 journal@recovery F·1
+16:06:39.067268 journal@recovery recovering @1
+16:06:39.540631 memdb@flush created L0@2 N·13553 S·364KiB "loc..seq,v2":"version,v1"
+16:06:39.551290 version@stat F·[1] S·364KiB[364KiB] Sc·[0.25]
+16:06:39.665968 db@janitor F·3 G·0
+16:06:39.670718 db@open done T·615.941483ms
+16:07:57.409388 db@close closing
+16:07:57.434426 db@close done T·25.225032ms
+=============== Jul 16, 2025 (UTC) ===============
+16:11:53.906163 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:11:53.932228 version@stat F·[1] S·364KiB[364KiB] Sc·[0.25]
+16:11:53.932991 db@open opening
+16:11:53.953669 journal@recovery F·1
+16:11:53.963919 journal@recovery recovering @3
+16:11:54.177547 memdb@flush created L0@5 N·2131 S·58KiB "loc..seq,v13555":"n:\xff..ong,v15109"
+16:11:54.221516 version@stat F·[2] S·423KiB[423KiB] Sc·[0.50]
+16:11:54.536737 db@janitor F·4 G·0
+16:11:54.537308 db@open done T·599.093239ms
+16:11:54.932836 table@compaction L0·2 -> L1·0 S·423KiB Q·15686
+16:11:55.349277 table@build created L1@8 N·9975 S·349KiB "loc..seq,v13555":"version,v1"
+16:11:55.367788 version@stat F·[0 1] S·349KiB[0B 349KiB] Sc·[0.00 0.00]
+16:11:55.378297 table@compaction committed F-1 S-74KiB Ke·0 D·5709 T·444.053411ms
+16:11:55.420774 table@remove removed @2
+16:15:13.376566 db@close closing
+16:15:13.401070 db@close done T·25.349313ms
+=============== Jul 16, 2025 (UTC) ===============
+16:15:54.657294 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:15:54.666395 version@stat F·[0 1] S·349KiB[0B 349KiB] Sc·[0.00 0.00]
+16:15:54.667111 db@open opening
+16:15:54.669167 journal@recovery F·1
+16:15:54.671385 journal@recovery recovering @6
+16:15:54.714716 memdb@flush created L0@9 N·4595 S·121KiB "loc..seq,v15687":"n:\xff..ing,v17748"
+16:15:54.719634 version@stat F·[1 1] S·470KiB[121KiB 349KiB] Sc·[0.25 0.00]
+16:15:54.756783 db@janitor F·5 G·1
+16:15:54.757296 db@janitor removing table-5
+16:15:54.759961 db@open done T·92.620645ms
+16:15:54.847212 table@compaction L0·1 -> L1·1 S·470KiB Q·20283
+16:15:55.057222 table@build created L1@12 N·13034 S·448KiB "loc..seq,v15687":"version,v1"
+16:15:55.057736 version@stat F·[0 1] S·448KiB[0B 448KiB] Sc·[0.00 0.00]
+16:15:55.061281 table@compaction committed F-1 S-22KiB Ke·0 D·1536 T·212.907636ms
+16:15:55.064685 table@remove removed @8
+16:40:04.657104 db@close closing
+16:40:04.670905 db@close done T·14.202383ms
+=============== Jul 16, 2025 (UTC) ===============
+16:41:29.754161 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:41:29.770266 version@stat F·[0 1] S·448KiB[0B 448KiB] Sc·[0.00 0.00]
+16:41:29.771353 db@open opening
+16:41:29.773522 journal@recovery F·1
+16:41:29.777750 journal@recovery recovering @10
+16:41:29.851422 memdb@flush created L0@13 N·6557 S·168KiB "loc..seq,v20283":"n:\xff..ail,v21938"
+16:41:29.857907 version@stat F·[1 1] S·616KiB[168KiB 448KiB] Sc·[0.25 0.00]
+16:41:29.897011 db@janitor F·5 G·1
+16:41:29.897698 db@janitor removing table-9
+16:41:29.899872 db@open done T·128.209192ms
+16:41:30.029453 table@compaction L0·1 -> L1·1 S·616KiB Q·26841
+16:41:30.230641 table@build created L1@16 N·17100 S·576KiB "loc..seq,v20283":"version,v1"
+16:41:30.231015 version@stat F·[0 1] S·576KiB[0B 576KiB] Sc·[0.00 0.01]
+16:41:30.234004 table@compaction committed F-1 S-39KiB Ke·0 D·2491 T·204.183ms
+16:41:30.240565 table@remove removed @12
+16:44:39.358707 db@close closing
+16:44:39.365428 db@close done T·6.525831ms

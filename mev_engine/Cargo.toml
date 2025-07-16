@@ -1,0 +1,34 @@
+# mev_engine/Cargo.toml
+
+# This section defines basic information about your Rust project.
+[package]
+name = "mev_engine" # The name of your Rust library
+version = "0.1.0"   # The version of your library
+edition = "2021"    # The Rust edition (newer features are available in 2021)
+
+# This section specifies that we are building a "cdylib".
+# "cdylib" is a type of library that can be loaded by other languages,
+# which is exactly what we need for WebAssembly (WASM) to be used by Node.js.
+[lib]
+crate-type = ["cdylib"]
+
+# This section lists the external Rust libraries (dependencies) that our project needs.
+[dependencies]
+# wasm-bindgen: This library helps us connect Rust code to JavaScript.
+# It generates the necessary code to call Rust functions from JS and vice-versa.
+wasm-bindgen = "0.2.92"
+
+# serde: This library is for serializing and deserializing data.
+# We'll use it to convert JavaScript objects (JSON) into Rust data structures
+# and vice-versa, making it easy to pass data between Node.js and Rust.
+# The "derive" feature allows us to automatically generate code for serialization.
+serde = { version = "1.0", features = ["derive"] }
+
+# serde_json: This library specifically handles JSON serialization/deserialization.
+# It works with `serde` to convert Rust data into JSON strings and parse JSON strings into Rust data.
+serde_json = "1.0"
+
+# [dev-dependencies] are for libraries used only during development or testing.
+# wasm-bindgen-test: Used for writing tests for WASM modules.
+[dev-dependencies]
+wasm-bindgen-test = "0.3.42"

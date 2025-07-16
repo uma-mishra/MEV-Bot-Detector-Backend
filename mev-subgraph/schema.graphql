@@ -1,0 +1,38 @@
+# mev-subgraph/schema.graphql
+
+# Define entities to store historical MEV attack data.
+# An `MevAttack` entity represents a detected MEV event.
+type MevAttack @entity {
+  id: ID! # Unique ID for the attack (e.g., transaction hash of the victim or a combined hash)
+  victim: Bytes! # Address of the victim
+  attacker: Bytes! # Address of the attacker bot
+  profitEth: BigDecimal! # Profit in ETH
+  timestamp: BigInt! # Timestamp of the attack
+  blockNumber: BigInt! # Block number of the attack
+  transactionHash: Bytes! # Hash of the victim's transaction
+  # Add more fields for detailed analysis and pattern validation
+  # For example, details about the frontrun/backrun transactions:
+  frontrunTxHash: Bytes # Hash of the frontrun transaction
+  backrunTxHash: Bytes # Hash of the backrun transaction
+  # Involved tokens, amounts, gas prices, etc.
+  tokenIn: Bytes # Address of the token swapped in by the victim
+  tokenOut: Bytes # Address of the token swapped out by the victim
+  amountIn: BigInt # Amount of token in
+  amountOutMin: BigInt # Minimum amount of token out expected by victim
+  actualAmountOut: BigInt # Actual amount of token out received by victim
+  gasPremium: BigInt # Example: difference in gas price between attacker and victim
+}
+
+# You would also define entities for specific transaction types if needed,
+# e.g., `Swap` events from Uniswap V2/V3 contracts.
+# type Swap @entity {
+#   id: ID!
+#   transactionHash: Bytes!
+#   timestamp: BigInt!
+#   token0: Bytes!
+#   token1: Bytes!
+#   amount0In: BigInt!
+#   amount1Out: BigInt!
+#   sender: Bytes!
+#   to: Bytes!
+# }

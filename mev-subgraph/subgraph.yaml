@@ -1,0 +1,49 @@
+# mev-subgraph/subgraph.yaml
+
+# This is the main configuration file for your subgraph.
+# It tells The Graph what data sources to listen to and how to process that data.
+
+specVersion: 0.0.8 # The version of the subgraph manifest specification
+schema:
+  file: ./schema.graphql # Points to our schema definition
+
+dataSources:
+  # Define an Ethereum contract as a data source.
+  - kind: ethereum/contract
+    name: UniswapV2Router02 # A name for this data source
+    network: mainnet # IMPORTANT: You can change this to `goerli` or `sepolia` if you want to index a testnet.
+                     # For now, let's keep it as `mainnet` as the ABI is for mainnet.
+    source:
+      address: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" # Uniswap V2 Router 02 address on Mainnet
+      abi: IUniswapV2Router02 # Refers to the ABI file we just saved
+      startBlock: 10000000 # Start indexing from this block number.
+                           # For testnets, use a recent block number to speed up initial sync.
+                           # For mainnet, 10,000,000 is a good starting point for Uniswap V2.
+    mapping:
+      kind: ethereum/events # We are mapping Ethereum events
+      apiVersion: 0.0.7     # The version of the AssemblyScript API
+      language: wasm/assemblyscript # The language used for mapping handlers
+      file: ./src/mapping.ts # Points to our mapping logic file
+      entities:
+        - MevAttack # The entity type defined in schema.graphql that this mapping will create
+      abis:
+        # Reference to the ABI we saved. The `name` here must match the `abi` field above.
+        - name: IUniswapV2Router02
+          file: ./abis/IUniswapV2Router02.json
+      eventHandlers:
+        # This defines which contract events we want to listen to and which function in `mapping.ts`
+        # should handle them.
+        # The `Swap` event is commonly emitted by Uniswap V2 pair contracts.
+        # NOTE: The Uniswap V2 Router (0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D)
+        # does NOT emit a `Swap` event itself. Swap events are emitted by the
+        # Uniswap V2 *Pair* contracts.
+        # For a real MEV subgraph, you would likely index the Uniswap V2 Factory
+        # to find all Pair contracts, and then dynamically add data sources for each pair,
+        # listening for their `Swap` events.
+        # For this demo, we're keeping it simple by showing how you *would* listen if the Router emitted it,
+        # or if this was a Pair contract.
+        - event: Swap(indexed address amount0In, indexed address amount1Out, indexed address amount0Out, indexed address amount1Out, indexed address to)
+          handler: handleSwap
+        # If you wanted to index specific function calls (not just events), you would use `callHandlers`:
+        # - call: swapExactTokensForTokens(uint256,uint256,address[],address,uint256)
+        #   handler: handleSwapCall
