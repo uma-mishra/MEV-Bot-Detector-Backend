@@ -1,0 +1,11 @@
+{
+  "name": "mev_engine",
+  "version": "0.1.0",
+  "files": [
+    "mev_engine_bg.wasm",
+    "mev_engine.js",
+    "mev_engine.d.ts"
+  ],
+  "main": "mev_engine.js",
+  "types": "mev_engine.d.ts"
+}
