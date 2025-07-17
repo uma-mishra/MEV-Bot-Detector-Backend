@@ -4,6 +4,7 @@ This backend service is designed to identify and alert on potential MEV (Maximal
 
 Architecture Diagram
 The system's architecture is illustrated below:
+
 https://i.postimg.cc/s2BNRcw2/project-png.png
 
 Key Features & Technologies
@@ -59,8 +60,8 @@ Docker Desktop (Ensure it's running and you are logged in)
 Microsoft Visual C++ Build Tools (Required for Rust compilation on Windows; select the "Desktop development with C++" workload during installation)
 
 1. Clone the Repository
-git clone https://github.com/uma-mishra/MEV-Bot-Detector-Backend.git # Replace with your actual repo URL if different
-cd MEV-Bot-Detector-Backend # Adjust directory name if your repo name differs
+git clone https://github.com/uma-mishra/MEV-Bot-Detector-Backend.git
+
 
 2. Install Node.js Dependencies
 Navigate to the project root and install the primary Node.js dependencies:
@@ -135,7 +136,7 @@ abis/IUniswapV2Router02.json: Provides the Application Binary Interface (ABI) fo
 Purpose: This subgraph is intended to build a valuable dataset of historical MEV attacks, which is crucial for validating new detection patterns and enhancing the robustness of the MEV detector.
 
 Local Build Status & Explanation:
-During the development process, I encountered a persistent environment-specific issue with graph-cli on my local Windows setup. Specifically, the graph codegen and graph build commands consistently reported "File does not exist" errors for schema.graphql, abis/IUniswapV2Router02.json, and src/mapping.ts. This occurred despite verifying that these files were correctly present and named within the project structure. This challenge appears to stem from an underlying local file system access or caching behavior within the graph-cli's execution environment.
+During the development process, I encountered a persistent environment-specific issue with graph-cli on my local Windows setup. The graph codegen and graph build commands repeatedly reported "File does not exist" errors for schema.graphql, abis/IUniswapV2Router02.json, and src/mapping.ts. This occurred despite verifying that these files were correctly present and named within the project structure. This challenge appears to stem from an underlying local file system access or caching behavior within the graph-cli's execution environment.
 
 Solution Approach:
 In a production environment or for more robust local development, such issues are typically resolved by:
@@ -144,17 +145,17 @@ Deploying directly to The Graph Hosted Service: This approach offloads the build
 
 Utilizing a Dockerized Graph Node for local development: This isolates The Graph CLI and its dependencies within a containerized environment, providing a consistent and predictable setup. (While attempted, this also introduced further specific Docker startup challenges, leading to the decision to streamline the docker-compose.yml for the core detector's stability.)
 
-Conclusion: Despite the local graph build command not executing successfully due to this environmental hurdle, the code for the subgraph is complete, correctly structured, and fully prepared for deployment to a compatible Graph Node environment.
+Conclusion: While the local graph build command could not be successfully executed due to this environmental hurdle, the code for the subgraph is complete, correctly structured, and fully prepared for deployment to a compatible Graph Node environment.
 
 Future Improvements
 Advanced MEV Detection: Expand detection capabilities to include more sophisticated MEV patterns beyond basic sandwich attacks, such as JIT liquidity, complex backrunning strategies, and generalized frontrunning.
 
 Robust Data Decoding: Implement a more advanced transaction decoder to accurately parse calldata and identify specific function calls (e.g., swapExactTokensForTokens), enabling more precise MEV analysis.
 
-Dynamic Subgraph Indexing: Enhance The Graph component to dynamically create data sources for Uniswap Pair contracts (discoverable via the Factory contract) to specifically index their emitted Swap events.
+Dynamic Subgraph Indexing: Enhance The Graph component to dynamically create data sources for Uniswap Pair contracts (discoverable via the Factory contract) to index their emitted Swap events.
 
 Alerting Service Integration: Develop a dedicated mock or live "alerting service" that actively consumes messages from the Kafka mev-alerts topic.
 
-Monitoring & Visualization: Integrate dashboards (e.g., using Grafana) to provide visual insights into detected MEV attacks and overall system performance.
+Monitoring & Visualization: Integrate dashboards (e.g., Grafana) to provide visual insights into detected MEV attacks and overall system performance.
 
 Database Integration: Implement persistent storage for detected MEV attacks in a dedicated database for long-term analysis and historical querying.
