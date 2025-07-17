@@ -5,7 +5,6 @@ This backend service is designed to identify and alert on potential MEV (Maximal
 Architecture Diagram
 The system's architecture is illustrated below:
 
-(Note: The original image URL provided in the problem statement was a local file. For GitHub, it needs to be a publicly accessible URL. Consider uploading your diagram to an image hosting service like Imgur and replacing this URL with the direct image link. Alternatively, you can remove this line and describe the architecture directly in text.)
 
 Key Features & Technologies
 Ethereum Mempool Ingestion: Actively monitors pending Ethereum transactions in real-time using ethers.providers.WebSocketProvider.
